@@ -45,7 +45,7 @@ bot = Bot(token=API_TOKEN)
 storage = MemoryStorage()
 dp = Dispatcher(bot, storage=storage)
 
-ADMINS = {6486825926, 7575041003}
+ADMINS = {6486825926, 5648834367}
 
 # === KEYBOARDS ===
 def admin_keyboard():
@@ -56,7 +56,7 @@ def admin_keyboard():
     kb.add("❌ Kodni o‘chirish", "📄 Kodlar ro‘yxati")
     kb.add("✏️ Kodni tahrirlash", "📤 Post qilish")
     kb.add("📢 Habar yuborish", "📘 Qo‘llanma")
-    kb.add("➕ Admin qo‘shish", "📡 Kanal boshqaruvi")
+    kb.add("📡 Kanal boshqaruvi")
     return kb
 
 def control_keyboard():
