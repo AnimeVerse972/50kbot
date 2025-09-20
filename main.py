@@ -663,19 +663,13 @@ async def add_kino_handler(message: types.Message, state: FSMContext):
         reklama_id = int(reklama_id)
         post_count = int(post_count)
         await add_kino_code(code, server_channel, reklama_id + 1, post_count, title)
-        download_btn = InlineKeyboardMarkup().add(
-            InlineKeyboardButton("✨Yuklab olish✨", url=f"https://t.me/{BOT_USERNAME}?start={code}")
-        )
-        for ch in MAIN_CHANNELS:
-            try:
-                await bot.copy_message(ch, server_channel, reklama_id, reply_markup=download_btn)
-                successful += 1
-            except:
-                failed += 1
-
-    await message.answer(f"✅ Yangi kodlar qo‘shildi:\n\n✅ Muvaffaqiyatli: {successful}\n❌ Xatolik: {failed}", reply_markup=admin_keyboard())
+        successful += 1
+    await message.answer(
+        f"✅ Yangi kodlar bazaga qo‘shildi:\n\n"
+        f"✅ Muvaffaqiyatli: {successful}\n❌ Xatolik: {failed}",
+        reply_markup=admin_keyboard()
+    )
     await state.finish()
-
 
 # === Kodlar ro'yxati ===
 @dp.message_handler(lambda m: m.text == "📄 Kodlar ro‘yxati")
